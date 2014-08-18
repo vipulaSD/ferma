@@ -1,0 +1,132 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://myapp.appspot.com/_ah/api",
+  "name" : "fermaApi",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://myapp.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "com.FERMA.API",
+  "ownerName" : "vipula",
+  "methods" : {
+    "fermaApi.getSellingRates" : {
+      "path" : "sellingRates",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.FERMA.API.FermaApi.sellingRates",
+      "request" : {
+        "parameters" : {
+          "Currency Code" : {
+            "type" : "string",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "fermaApi.fermaApi.updateData" : {
+      "path" : "void",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.FERMA.API.FermaApi.updateData",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "fermaApi.getBuyingRates" : {
+      "path" : "buyingRates",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.FERMA.API.FermaApi.buyingRates",
+      "request" : {
+        "parameters" : {
+          "Currency Code" : {
+            "type" : "string",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "CollectionResponse_ValuePair" : {
+        "id" : "CollectionResponse_ValuePair",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "ValuePair"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ValuePair" : {
+        "id" : "ValuePair",
+        "type" : "object",
+        "properties" : {
+          "bankCode" : {
+            "type" : "string"
+          },
+          "rate" : {
+            "type" : "number"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.FERMA.API.FermaApi.sellingRates" : {
+        "response" : {
+          "$ref" : "CollectionResponse_ValuePair"
+        }
+      },
+      "com.FERMA.API.FermaApi.updateData" : {
+      },
+      "com.FERMA.API.FermaApi.buyingRates" : {
+        "response" : {
+          "$ref" : "CollectionResponse_ValuePair"
+        }
+      }
+    }
+  }
+}
